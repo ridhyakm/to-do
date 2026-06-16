@@ -1,0 +1,180 @@
+:root {
+  --bg-app: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --success: #22c55e;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
+.dark {
+  --bg-app: #090d16;
+  --bg-card: #151f32;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #223147;
+  --accent: #818cf8;
+  --accent-hover: #6366f1;
+  --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard-wrapper {
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 780px;
+  margin: auto;
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+h1 { font-size: 2.4rem; margin-top: 0; letter-spacing: -0.05em; font-weight: 800; }
+h3 { margin-top: 36px; color: var(--text-main); font-size: 1.3rem; border-bottom: 2px solid var(--border); padding-bottom: 12px; font-weight: 700;}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--bg-app);
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.stat-card h4 { margin: 0; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.stat-card p { margin: 8px 0 0; font-size: 1.6rem; font-weight: 800; color: var(--text-main); }
+
+.row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; width: 100%; }
+input[type="text"], select {
+  flex: 1;
+  min-width: 130px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+input[type="text"]:focus, select:focus { border-color: var(--accent); }
+
+button {
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+button:hover { background: var(--accent-hover); transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+
+.btn-secondary { background: var(--border); color: var(--text-main); }
+.btn-secondary:hover { background: var(--border); opacity: 0.85; }
+.btn-danger { background: transparent; color: var(--danger); padding: 8px 14px; border-radius: 10px; }
+.btn-danger:hover { background: rgba(239, 68, 68, 0.12); color: var(--danger-hover); }
+
+/* Navigation and Category Filters */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  gap: 12px;
+}
+.filter-tabs { display: flex; gap: 8px; }
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--text-muted);
+}
+.filter-btn:hover { background: var(--bg-app); color: var(--text-main); }
+.filter-btn.active { background: var(--accent); color: white; }
+
+/* Enhanced Task Cards */
+.task-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  background: var(--bg-card); /* FIXED: Using bg-card instead of bg-app for perfect dark contrast */
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
+  transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+}
+.task:hover { 
+  transform: translateY(-2px); 
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+.task-left { display: flex; align-items: center; gap: 14px; flex: 1; }
+.task-right { display: flex; align-items: center; gap: 14px; }
+
+.done { text-decoration: line-through; color: var(--text-muted); opacity: 0.55; }
+.badge { padding: 4px 10px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; }
+.category-badge { background: rgba(99, 102, 241, 0.1); color: var(--accent); border: 1px solid rgba(99, 102, 241, 0.15); }
+.priority-High { background: rgba(239, 68, 68, 0.12); color: #f87171; }
+.priority-Medium { background: rgba(245, 158, 11, 0.12); color: #fbbf24; }
+.priority-Low { background: rgba(34, 197, 94, 0.12); color: #4ade80; }
+
+.achievements-list { display: flex; flex-direction: column; gap: 12px; padding: 0; list-style: none; }
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.achievement-item.unlocked { border-color: var(--success); background: rgba(34, 197, 94, 0.03); }
+
+/* Pomodoro Timer Styles */
+.pomodoro-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #ffffff;
+  padding: 24px;
+  border-radius: 20px;
+  margin-top: 28px;
+  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.25);
+}
+.timer-digits { font-size: 2.4rem; font-family: monospace; font-weight: 800; letter-spacing: -1px; }
+.timer-controls { display: flex; gap: 10px; }
+.timer-btn { background: rgba(255, 255, 255, 0.18); color: white; padding: 10px 20px; border-radius: 12px; backdrop-filter: blur(4px); }
+.timer-btn:hover { background: rgba(255, 255, 255, 0.28); transform: translateY(-1px); }
